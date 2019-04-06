@@ -108,7 +108,7 @@ export default {
     setNavHeight () {
         this.$refs.navEl.style.maxHeight = this.menuExpanded
         ? this.$refs.navEl.scrollHeight + 'px'
-        : this.$refs.navEl.scrollHeight - this.$refs.menuEl.$el.scrollHeight + 'px'
+        : this.$refs.navEl.scrollHeight - this.$refs.menuEl.$el.clientHeight + 'px'
     }
   }
 }

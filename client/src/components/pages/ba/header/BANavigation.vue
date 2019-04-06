@@ -86,15 +86,20 @@ export default {
       this.weatherData = await axios.get('http://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&id=524901&APPID=bcebb95329f7ace43020439afcb4e214')
     },
     toggleMenu () {
+      console.log(this.$refs.navEl.style.height)
       // this.$refs.menuEl.$el.style.height = 'auto';
       // If the menu is expanded then we've set the height to auto (see below).
       // Here we are setting it back to a pixel value so the transition effect will work.
       if (this.menuExpanded) {
         this.setNavHeight()      
+      } else {
+        this.$refs.navEl.style.maxHeight = '35rem'
       }
+      // console.log(this.$refs.navEl.style.maxHeight)
 
       this.menuExpanded = !this.menuExpanded
       this.setNavHeight()      
+      // console.log(this.$refs.navEl.style.maxHeight)
       // We have to set the height to max-content so any expanding dropdowns within the menu
       // increase the height of the nav element. We don't care about a transition effect for these.
       // The height needs to get set to auto after the transition effect has taken place, so we must
@@ -102,13 +107,14 @@ export default {
       setTimeout(() => {
         if (this.menuExpanded) {
           this.$refs.navEl.style.maxHeight = 'max-content'
+        // console.log(this.$refs.navEl.style.maxHeight)
         }
       }, 301)
     },
     setNavHeight () {
         this.$refs.navEl.style.maxHeight = this.menuExpanded
         ? this.$refs.navEl.scrollHeight + 'px'
-        : this.$refs.navEl.scrollHeight - this.$refs.menuEl.$el.clientHeight + 'px'
+        : this.$refs.navEl.clientHeight - this.$refs.menuEl.$el.clientHeight + 'px'
     }
   }
 }

@@ -102,6 +102,7 @@ export default {
     padding-bottom: 1rem;
     font-size: 2.2rem;
     flex-direction: column;
+    display: none;
     // position: absolute;
     // top: 60rem;
   }

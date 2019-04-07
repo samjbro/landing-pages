@@ -15,9 +15,7 @@
           Main menu
           <fa-icon :icon="['fas', 'angle-down']" />
         </div>
-        <div>
-          <BAMenu ref="menuEl" />
-        </div>
+        <BAMenu ref="menuEl" />
       </div>
       <div class="ba-navigation__display">
         <div class="ba-navigation__info ba-navigation__info--measurement">
@@ -86,6 +84,7 @@ export default {
     toggleMenu () {
       // Close any submenus.
       this.$refs.menuEl.setActive(null)
+      if (this.menuExpanded) this.$refs.menuEl.$el.style.display = 'flex'
       // Make sure the nav element's maxHeight is a pixel value, or else the transition won't work.
       this.setNavHeight()
       // Set the menu to expanded.
@@ -93,13 +92,16 @@ export default {
       // Adjust the height of the nav element. This is inside a timeout so that the browser re-renders maxHeight as a pixel value before adjusting.
       setTimeout(() => {
         this.setNavHeight()
+        if (this.menuExpanded) this.$refs.menuEl.$el.style.display = 'flex'
       },1)
+
       setTimeout(() => {
       // Reset the nav element's maxHeight so the overall height will adjust (without a transition effect) when submenus expand.
         // if (this.menuExpanded) this.$refs.navEl.style.maxHeight = 'initial'
         if (this.menuExpanded) this.$refs.navEl.style.height = 'auto'
       // This needs to happen after the transition has completed or it'll cancel the effect, so the timeout needs to be the same length as the transition effect in the SCSS below.
       }, 301)
+
     },
     setNavHeight () {
       // this.$refs.navEl.style.maxHeight = this.menuExpanded

@@ -176,7 +176,7 @@ export default {
         padding-bottom: 0;
       }
       & > * {
-        padding-bottom: 2rem;
+        margin-bottom: 2rem;
       }
     }
     @include respond(phone) {
@@ -187,6 +187,8 @@ export default {
   &__search {
     position: relative;
     color: #a8a8a8;
+    background: red;
+    display: block;
 
     input {
       color: #555;
@@ -217,6 +219,7 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       right: 1rem;
+      font-size: 1.6rem;
     }
   }
   &__display {

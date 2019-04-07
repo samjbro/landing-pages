@@ -98,23 +98,22 @@ export default {
       setTimeout(() => {
       // Reset the nav element's maxHeight so the overall height will adjust (without a transition effect) when submenus expand.
         // if (this.menuExpanded) this.$refs.navEl.style.maxHeight = 'initial'
-        if (this.menuExpanded) this.$refs.navEl.style.height = 'auto'
+        if (this.menuExpanded) this.$refs.navEl.style.maxHeight = 'initial'
       // This needs to happen after the transition has completed or it'll cancel the effect, so the timeout needs to be the same length as the transition effect in the SCSS below.
       }, 301)
 
     },
     setNavHeight () {
       // this.$refs.navEl.style.maxHeight = this.menuExpanded
-      this.$refs.navEl.style.height = this.menuExpanded
       // This must be the same as the expanded menu's height.
-        ? '69rem'
+        // ? '69rem'
       // This should be the same as the $ba-header-height-mobile SASS variable.
-        : '35rem' 
+        // : '35rem' 
 
       // Below is an attempt to calculate the necessary height on the fly, but scroll/client height don't work reliably on mobile browsers. Shame.
-      // this.$refs.navEl.style.maxHeight = this.menuExpanded
-      // ? this.$refs.navEl.scrollHeight + 'px'
-      // : this.$refs.navEl.clientHeight - this.$refs.menuEl.$el.clientHeight + 'px'
+      this.$refs.navEl.style.maxHeight = this.menuExpanded
+        ? this.$refs.navEl.scrollHeight + 'px'
+        : this.$refs.navEl.clientHeight - this.$refs.menuEl.$el.clientHeight + 'px'
     }
   }
 }
@@ -132,12 +131,12 @@ export default {
   flex-direction: column;
   align-items: center;
   color: #fff;
-  // transition: max-height .4s;
-  transition: height .4s;
+  transition: max-height .4s;
+  // transition: height .4s;
   z-index: 999;
   @include respond(phone) {
     overflow: hidden;
-    height: $ba-header-height-mobile;
+    max-height: $ba-header-height-mobile;
     display: block;
   }
 

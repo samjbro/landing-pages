@@ -97,7 +97,7 @@
     }
 
     &--ba {
-      background-image: url('~img/ba-preview.png');
+      background-image: url('~img/ba-preview.jpg');
 
       &:hover {
         &::before {

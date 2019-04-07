@@ -190,6 +190,9 @@ export default {
         padding-bottom: 2rem;
       }
     }
+    @include respond(phone) {
+      // display: block;
+    }
   }
 
   &__search {
@@ -290,6 +293,7 @@ export default {
       align-items: initial;
       width: 100%;
       padding: 0 2rem;
+      display: block;
     }
   }
 

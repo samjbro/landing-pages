@@ -15,7 +15,9 @@
           Main menu
           <fa-icon :icon="['fas', 'angle-down']" />
         </div>
-        <!-- <BAMenu ref="menuEl" /> -->
+        <div>
+          <BAMenu ref="menuEl" />
+        </div>
       </div>
       <div class="ba-navigation__display">
         <div class="ba-navigation__info ba-navigation__info--measurement">
@@ -25,7 +27,6 @@
           Hum. {{ humidity || '-' }}%  
         </div>    
         <div class="ba-navigation__info" v-if="weatherData">
-          <!-- <img src="~img/ba-clouds.svg" alt="clouds"> -->
           <img :src="weather.icon" :alt="weather.description">
         </div>
         <div class="ba-navigation__info ba-navigation__info--select">

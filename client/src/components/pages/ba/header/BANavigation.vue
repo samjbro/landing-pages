@@ -138,6 +138,7 @@ export default {
   @include respond(phone) {
     overflow: hidden;
     height: $ba-header-height-mobile;
+    display: block;
   }
 
   &::before {

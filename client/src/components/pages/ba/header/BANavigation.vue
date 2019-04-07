@@ -55,23 +55,20 @@ export default {
   },
   computed: {
     temperature () {
-      return this.weatherData
-        ? this.weatherData.data.main.temp
-        : '-'
+      if (!this.weatherData) return '-'
+      const temp = this.weatherData.data.main.temp
+      return temp.toString().replace('.', ',')
     },
     humidity () {
-      return this.weatherData
-        ? this.weatherData.data.main.humidity
-        : '-'
+      if (!this.weatherData) return '-'
+      const humidity = this.weatherData.data.main.humidity
+      return humidity.toString().replace('.', ',')
     },
     weather () {
       const weather = this.weatherData.data.weather[0]
 
-      // Source site has no night weather icons (check at night time), so always use day icons
-      weather.icon = weather.icon.slice(0, 2) + 'd'
-
       // No icon for mist, so use cloud instead
-      if (weather.icon === '50d') weather.icon = '03d'
+      if (weather.icon.slice(0, 2) === '50') weather.icon = '03' + weather.icon.slice(-1)
       return {
         icon: require(`img/ba/weather/${weather.icon}.svg`),
         alt: weather.description
@@ -86,35 +83,33 @@ export default {
       this.weatherData = await axios.get('http://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&units=metric&id=524901&APPID=bcebb95329f7ace43020439afcb4e214')
     },
     toggleMenu () {
-      console.log(this.$refs.navEl.style.height)
-      // this.$refs.menuEl.$el.style.height = 'auto';
-      // If the menu is expanded then we've set the height to auto (see below).
-      // Here we are setting it back to a pixel value so the transition effect will work.
-      if (this.menuExpanded) {
-        this.setNavHeight()      
-      } else {
-        this.$refs.navEl.style.maxHeight = '35rem'
-      }
-      // console.log(this.$refs.navEl.style.maxHeight)
-
+      // Close any submenus.
+      this.$refs.menuEl.setActive(null)
+      // Make sure the nav element's maxHeight is a pixel value, or else the transition won't work.
+      this.setNavHeight()
+      // Set the menu to expanded.
       this.menuExpanded = !this.menuExpanded
-      this.setNavHeight()      
-      // console.log(this.$refs.navEl.style.maxHeight)
-      // We have to set the height to max-content so any expanding dropdowns within the menu
-      // increase the height of the nav element. We don't care about a transition effect for these.
-      // The height needs to get set to auto after the transition effect has taken place, so we must
-      // add a delay equal to just more than the transition duration. This is irritating.
+      // Adjust the height of the nav element. This is inside a timeout so that the browser re-renders maxHeight as a pixel value before adjusting.
       setTimeout(() => {
-        if (this.menuExpanded) {
-          this.$refs.navEl.style.maxHeight = 'max-content'
-        // console.log(this.$refs.navEl.style.maxHeight)
-        }
+        this.setNavHeight()
+      },1)
+      setTimeout(() => {
+      // Reset the nav element's maxHeight so the overall height will adjust (without a transition effect) when submenus expand.
+        if (this.menuExpanded) this.$refs.navEl.style.maxHeight = 'initial'
+      // This needs to happen after the transition has completed or it'll cancel the effect, so the timeout needs to be the same length as the transition effect in the SCSS below.
       }, 301)
     },
     setNavHeight () {
-        this.$refs.navEl.style.maxHeight = this.menuExpanded
-        ? this.$refs.navEl.scrollHeight + 'px'
-        : this.$refs.navEl.clientHeight - this.$refs.menuEl.$el.clientHeight + 'px'
+      this.$refs.navEl.style.maxHeight = this.menuExpanded
+      // This must be larger than the expanded menu's height.
+        ? '75rem'
+      // This should be the same as the $ba-header-height-mobile SASS variable.
+        : '35rem' 
+
+      // Below is an attempt to calculate the necessary height on the fly, but scroll/client height don't work reliably on mobile browsers. Shame.
+      // this.$refs.navEl.style.maxHeight = this.menuExpanded
+      // ? this.$refs.navEl.scrollHeight + 'px'
+      // : this.$refs.navEl.clientHeight - this.$refs.menuEl.$el.clientHeight + 'px'
     }
   }
 }

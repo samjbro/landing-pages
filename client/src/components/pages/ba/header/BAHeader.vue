@@ -22,7 +22,6 @@ export default {
 @import "~#/abstracts/variables";
 .ba-header {
   border-bottom: 1rem solid $color-ba-orange-2;
-  // padding-bottom: .4rem;
   position: relative;
   display: flex;
   flex-direction: column;

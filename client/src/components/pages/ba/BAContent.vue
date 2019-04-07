@@ -131,10 +131,6 @@
 
     @include respond(tab-port) {
       margin: 1rem 0;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
-      // back
     }
   }
 
@@ -188,6 +184,10 @@
       flex-direction: column;
       margin-bottom: 2.6rem;
       align-items: center;
+    }
+
+    @include respond(phone) {
+      margin: 0 2rem;
     }
   }
 

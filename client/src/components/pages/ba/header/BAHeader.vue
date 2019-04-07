@@ -4,6 +4,7 @@
     <video v-if="tabletLandscapePlus" class="ba-header__bg" autoplay muted loop>
       <source src="~vid/ba/ba-video.mp4" />
     </video>
+    <img v-else class="ba-header__bg" src="~img/ba/ba-city.png" alt="Video Still">
     <div class="ba-header__title-wrapper">
       <div class="ba-header__title">Buenos Aires Many Passions</div>
     </div>
@@ -16,7 +17,6 @@ export default {
   components: { BANavigation },
   computed: {
     tabletLandscapePlus () {
-      console.log(window.innerWidth)
       return window.innerWidth > 999
     }
   }

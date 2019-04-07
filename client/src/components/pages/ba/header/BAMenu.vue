@@ -64,21 +64,6 @@
         Book
       </a>
     </div>
-    <div class="ba-menu__item">
-      <a href="#" class="ba-menu__link">
-        Book
-      </a>
-    </div>
-    <div class="ba-menu__item">
-      <a href="#" class="ba-menu__link">
-        Book
-      </a>
-    </div>
-    <div class="ba-menu__item">
-      <a href="#" class="ba-menu__link">
-        Book
-      </a>
-    </div>
   </div>
 </template>
 

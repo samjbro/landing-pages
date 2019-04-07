@@ -90,9 +90,9 @@ export default {
       // Set the menu to expanded.
       this.menuExpanded = !this.menuExpanded
       // Adjust the height of the nav element. This is inside a timeout so that the browser re-renders maxHeight as a pixel value before adjusting.
+      if (this.menuExpanded) this.$refs.menuEl.$el.style.display = 'flex'
       setTimeout(() => {
         this.setNavHeight()
-        if (this.menuExpanded) this.$refs.menuEl.$el.style.display = 'none'
       },1)
 
       setTimeout(() => {

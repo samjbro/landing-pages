@@ -1,9 +1,9 @@
 <template>
   <div class="ba-navigation" ref="navEl">
     <div class="ba-navigation__row">
-      <a href="#" class="ba-navigation__logo">
+      <router-link to="/" class="ba-navigation__logo">
         <img src="~img/ba/bac-footer.svg" alt="BA Logo">
-      </a>
+      </router-link>
       <div class="ba-navigation__search">
         <input type="text" placeholder="Buscar">
         <fa-icon :icon="['fas', 'search']" />

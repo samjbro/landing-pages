@@ -31,6 +31,7 @@
 </template>
 
 <style lang="scss">
+@import "~#/abstracts/mixins";
 .home {
   flex: 1;
   height: 100vh;
@@ -38,6 +39,10 @@
   display: flex;
   text-align: center;
   flex-direction: column;
+
+  @include respond(tab-port) {
+    height: 100%;
+  }
 
   &__title {
     margin-top: 3rem;
@@ -55,6 +60,10 @@
   &__row {
     display: flex;
     flex: 1;
+    @include respond(tab-port) {
+      flex-direction: column;
+      min-height: 80rem;
+    }
   }
 
   &__link {

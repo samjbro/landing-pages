@@ -1,7 +1,7 @@
 <template>
   <div class="ba-header">
     <BANavigation />
-    <video class="ba-header__bg" autoplay muted loop>
+    <video v-if="tabletLandscapePlus" class="ba-header__bg" autoplay muted loop>
       <source src="~vid/ba/ba-video.mp4" />
     </video>
     <div class="ba-header__title-wrapper">
@@ -13,7 +13,13 @@
 <script>
 import BANavigation from './BANavigation'
 export default {
-  components: { BANavigation }
+  components: { BANavigation },
+  computed: {
+    tabletLandscapePlus () {
+      console.log(window.innerWidth)
+      return window.innerWidth > 999
+    }
+  }
 }
 </script>
 

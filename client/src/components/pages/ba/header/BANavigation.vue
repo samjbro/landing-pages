@@ -177,7 +177,7 @@ export default {
       width: 100%;
       flex-direction: column;
       &--reversible {
-        flex-direction: column-reverse;
+        // flex-direction: column-reverse;
       }
       &:not(:last-child) {
         padding-bottom: 0;

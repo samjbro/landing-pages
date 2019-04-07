@@ -55,6 +55,11 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+
+    @include respond(tab-port) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
   }
 
   &__row {

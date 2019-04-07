@@ -109,9 +109,9 @@ export default {
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-    display: inline-block;
+    // display: block;
+
+    // display: inline-block;
     cursor: pointer;
     position: relative;
 

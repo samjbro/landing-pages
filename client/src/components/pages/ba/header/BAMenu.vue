@@ -116,17 +116,17 @@ export default {
     margin-right: .5rem;
 
     &:hover {
-        #{$ba-menu}__link {  
-          color: #000;
-          background-color: $color-ba-orange-2;
+      #{$ba-menu}__link {  
+        color: #000;
+        background-color: $color-ba-orange-2;
 
-          svg {
-            color: #2A6496;
-          }
+        svg {
+          color: #2A6496;
         }
-        #{$ba-menu}__dropdown {
-          display: flex;
-        }
+      }
+      #{$ba-menu}__dropdown {
+        display: flex;
+      }
     }
 
     @include respond(phone) {

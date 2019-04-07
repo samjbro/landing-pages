@@ -15,7 +15,7 @@
           Main menu
           <fa-icon :icon="['fas', 'angle-down']" />
         </div>
-        <BAMenu ref="menuEl" />
+        <!-- <BAMenu ref="menuEl" /> -->
       </div>
       <div class="ba-navigation__display">
         <div class="ba-navigation__info ba-navigation__info--measurement">
@@ -177,20 +177,13 @@ export default {
       width: 100%;
       flex-direction: column;
       &--reversible {
-        // flex-direction: column-reverse;
+        flex-direction: column-reverse;
       }
       &:not(:last-child) {
         padding-bottom: 0;
       }
       & > * {
         padding-bottom: 2rem;
-      }
-    }
-    @include respond(phone) {
-      &--reversible {
-        // position: absolute;
-        // top: 30rem;
-
       }
     }
   }
@@ -308,7 +301,6 @@ export default {
     color: #333;
     flex-grow: 2;
     margin-bottom: 2rem;
-    width: 100%;
 
     &:hover {
       color: #685822;

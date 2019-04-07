@@ -84,33 +84,23 @@ export default {
     toggleMenu () {
       // Close any submenus.
       this.$refs.menuEl.setActive(null)
-      // if (this.menuExpanded) this.$refs.menuEl.$el.style.display = 'none'
       // Make sure the nav element's maxHeight is a pixel value, or else the transition won't work.
       this.setNavHeight()
       // Set the menu to expanded.
       this.menuExpanded = !this.menuExpanded
       // Adjust the height of the nav element. This is inside a timeout so that the browser re-renders maxHeight as a pixel value before adjusting.
-      // if (this.menuExpanded) this.$refs.menuEl.$el.style.display = 'flex'
       setTimeout(() => {
         this.setNavHeight()
       },1)
 
       setTimeout(() => {
       // Reset the nav element's maxHeight so the overall height will adjust (without a transition effect) when submenus expand.
-        // if (this.menuExpanded) this.$refs.navEl.style.maxHeight = 'initial'
         if (this.menuExpanded) this.$refs.navEl.style.maxHeight = 'initial'
       // This needs to happen after the transition has completed or it'll cancel the effect, so the timeout needs to be the same length as the transition effect in the SCSS below.
       }, 301)
 
     },
     setNavHeight () {
-      // this.$refs.navEl.style.maxHeight = this.menuExpanded
-      // This must be the same as the expanded menu's height.
-        // ? '69rem'
-      // This should be the same as the $ba-header-height-mobile SASS variable.
-        // : '35rem' 
-
-      // Below is an attempt to calculate the necessary height on the fly, but scroll/client height don't work reliably on mobile browsers. Shame.
       this.$refs.navEl.style.maxHeight = this.menuExpanded
         ? this.$refs.navEl.scrollHeight + 'px'
         : this.$refs.navEl.clientHeight - this.$refs.menuEl.$el.clientHeight + 'px'
